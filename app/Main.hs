@@ -1,6 +1,6 @@
 module Main where
 
-import Lib
+import RSA
 
 main :: IO ()
-main = someFunc
+main = --encrypt
