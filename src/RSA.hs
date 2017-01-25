@@ -4,7 +4,7 @@ module RSA
   )
   where
 
-encrypt :: (Int, Int, Int)-> Int
+encrypt :: (Integer, Integer, Integer)-> Integer
 encrypt (t, e, n) = t^e `mod` n
 
 decrypt ::(Integer, Integer, Integer) -> Integer
