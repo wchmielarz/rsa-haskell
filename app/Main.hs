@@ -1,6 +1,7 @@
 module Main where
 
 import RSA
+import ArgumentParser
 
 main :: IO ()
-main = --encrypt
+main = parseInput
