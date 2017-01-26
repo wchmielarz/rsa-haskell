@@ -11,6 +11,7 @@ import Control.Exception
 import FileManager
 import RSA
 
+-- | Tutaj cos przetestujemy haddock
 parseInput = do
   (option:_) <- getArgs
   (option:inFileName:outFileName:key:modulus:_) <- getArgs

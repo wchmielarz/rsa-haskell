@@ -32,5 +32,9 @@ encryptNumber number key modulo = let powers = getPowerList key
 encryptText :: Int -> Int -> [Char] -> [Char]
 encryptText key modulo text = map chr $ map (\number -> encryptNumber number key modulo) $ map ord text
 
-decryptText :: Int -> Int -> [Char] -> [Char]
+-- | Test
+decryptText :: Int -- ^ aaa
+            -> Int -- ^ bb
+            -> [Char]
+            -> [Char]
 decryptText key modulo text  = encryptText key modulo text
