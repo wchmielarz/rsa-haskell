@@ -9,6 +9,7 @@ import System.Environment
 import System.IO.Error
 import Control.Exception
 import FileManager
+import Primes
 import RSA
 
 -- | Tutaj cos przetestujemy haddock
@@ -16,7 +17,9 @@ parseInput = do
   (option:_) <- getArgs
   (option:inFileName:outFileName:key:modulus:_) <- getArgs
   case () of _
-               | option == "g" -> putStrLn "generate"
+               | option == "g" -> do
+                   s <- getRSAKeyPairs
+                   (putStrLn . showDetails) s
                | option == "e" -> do
                  result <- try $ rewriteFile inFileName outFileName $ encryptText (getKey key) (getKey modulus)
                  case result of
@@ -28,6 +31,9 @@ parseInput = do
                        Left ex -> exHdlr ex
                        Right _ -> putStrLn "completed"
                | otherwise     -> putStrLn "Help"
+
+showDetails :: ((Integer, Integer),(Integer,Integer)) -> String
+showDetails ((a,b),(c,d)) = "Klucz publiczny:" ++ show (a,b) ++ "\n" ++ "Klucz prywatny:" ++ show (c,d)
 
 exHdlr :: IOError -> IO ()
 exHdlr = \ex -> if isDoesNotExistError ex
