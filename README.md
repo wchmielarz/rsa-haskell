@@ -27,7 +27,7 @@ stack exec rsa-haskell-exe e test.txt out.txt 2683 25877
 
 ####Decrypting 
 ```
-stack exec rsa-haskell e toDecryptFile outputFile Private Key
+stack exec rsa-haskell d toDecryptFile outputFile Private Key
 ```
 
 Example:
