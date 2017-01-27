@@ -7,7 +7,7 @@ License     : MIT
 Module provides service for generating RSA Keys.
 -}
 
-module Primes
+module Keys
   (
     getRSAKeyPairs,
     properMod,
