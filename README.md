@@ -40,3 +40,8 @@ stack exec rsa-haskell-exe d out.txt out2.txt 7795 25877
 ```bash
 stack test
 ```
+
+#### License
+
+Copyright © 2017, Grzegorz Jasiński, Wojciech Chmielarz.
+Released under the [MIT license](LICENSE).
