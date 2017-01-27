@@ -14,23 +14,17 @@ import RSA
 
 -- | Tutaj cos przetestujemy haddock
 parseInput = do
-  (option:_) <- getArgs
-  (option:inFileName:outFileName:key:modulus:_) <- getArgs
-  case () of _
-               | option == "g" -> do
-                   s <- getRSAKeyPairs
-                   (putStrLn . showDetails) s
-               | option == "e" -> do
-                 result <- try $ rewriteFile inFileName outFileName $ encryptText (getKey key) (getKey modulus)
-                 case result of
-                   Left ex -> exHdlr ex
-                   Right _ -> putStrLn "completed"
-               | option == "d" -> do
-                 result <- try $ rewriteFile inFileName outFileName $ decryptText (getKey key) (getKey modulus)
-                 case result of
-                       Left ex -> exHdlr ex
-                       Right _ -> putStrLn "completed"
-               | otherwise     -> putStrLn "Help"
+  args <-getArgs
+  case (args) of
+    [inFileName, outFileName, key, modulus] -> do
+      result <- try $ rewriteFile inFileName outFileName $ encryptText (getKey key) (getKey modulus)
+      case result of
+        Left ex -> exHdlr ex
+        Right _ -> putStrLn "Operation completed"
+
+    _                                       -> do
+      s <- getRSAKeyPairs
+      (putStrLn . showDetails) s
 
 showDetails :: ((Integer, Integer),(Integer,Integer)) -> String
 showDetails ((a,b),(c,d)) = "Klucz publiczny:" ++ show (a,b) ++ "\n" ++ "Klucz prywatny:" ++ show (c,d)
