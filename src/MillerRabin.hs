@@ -1,5 +1,15 @@
+{-|
+Module      : MillerRabin
+Description : Module is a wrapper for all functions required for proper MillerRabin primality test.
+Copyright   : (c) Grzegorz Jasinski, Wojtek Chmielarz
+License     : MIT
+
+Module provides service for checking if given numbers is prime.
+-}
+
 module MillerRabin
-  (isPrime
+  (
+    isPrime
   )
   where
 
@@ -11,6 +21,7 @@ isPrime :: Integer -> Bool
 isPrime n = unsafePerformIO (testMillerRabin 100 n)
 
 
+-- |The 'testMillerRabin' tests primality of numer using Miller-Rabin Algoritm
 testMillerRabin :: Int -> Integer -> IO Bool
 testMillerRabin k n
    | even n    = return (n == 2)
@@ -25,6 +36,8 @@ test n n_1 evens d a = x `elem` [1,n_1] || n_1 `elem` powers
     x = powerMod n a d
     powers = map (powerMod n a) evens
 
+
+-- |The 'witnesses' returns witnesses for numer which are sufficient to check
 witnesses :: (Num a, Ord a, Random a) => Int -> a -> IO [a]
 witnesses k n
   | n < 2047                = return [2]
@@ -40,7 +53,7 @@ witnesses k n
   | otherwise               = do g <- newStdGen
                                  return $ take k (randomRs (2, n - 1) g)
 
--- powerMod m x n = x^n `mod` m
+-- |The 'powerMod' returns x which satisfy x^n `mod` m
 powerMod :: Integral nat => nat -> nat -> nat -> nat
 powerMod m x n  = f (n - 1) x x `rem` m
   where

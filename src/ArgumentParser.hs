@@ -17,7 +17,7 @@ import System.Environment
 import System.IO.Error
 import Control.Exception
 import FileManager
-import Primes
+import Keys
 import RSA
 
 -- | The 'parseInput' function provides reading arguments and invoking functions. This is IO fucntion.
