@@ -9,7 +9,8 @@ Module provides file service.
 module FileManager
   (
     rewriteFile
-  ) where
+  )
+where
 
 import Data.Char
 

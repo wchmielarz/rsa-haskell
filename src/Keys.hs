@@ -6,7 +6,6 @@ License     : MIT
 
 Module provides service for generating RSA Keys.
 -}
-
 module Keys
   (
     getRSAKeyPairs,
@@ -43,13 +42,13 @@ extendedEuclidean 0 b = (0, 1)
 extendedEuclidean a b = let (s, t) = extendedEuclidean (b `mod` a) a
                         in (t - (b `div` a) * s, s)
 
--- The 'getPrivateExp' function returns private exponent for RSA using public exponent e and primes p,q
+-- | The 'getPrivateExp' function returns private exponent for RSA using public exponent e and primes p,q
 getPrivateExp :: Integer -> Integer -> Integer -> IO Integer
 getPrivateExp e p q =
         return (properMod (fst (extendedEuclidean e ((p - 1) * (q - 1))))
           ((p - 1) * (q - 1)))
 
--- The 'getPublicExp' function returns public exponent for RSA using public primes p,q
+-- | The 'getPublicExp' function returns public exponent for RSA using public primes p,q
 getPublicExp :: Integer -> Integer -> IO Integer
 getPublicExp p q =
     do
@@ -57,7 +56,8 @@ getPublicExp p q =
         if gcd e ((p - 1) * (q - 1)) == 1
             then return e
             else getPublicExp p q
--- The 'getRSAKeyPairs' function returns two tuples, public and private key
+            
+-- | The 'getRSAKeyPairs' function returns two tuples, public and private key
 getRSAKeyPairs :: IO ((Integer, Integer), (Integer, Integer))
 getRSAKeyPairs =
     do

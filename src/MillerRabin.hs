@@ -6,7 +6,6 @@ License     : MIT
 
 Module provides service for checking if given numbers is prime.
 -}
-
 module MillerRabin
   (
     isPrime
@@ -19,7 +18,6 @@ import System.IO.Unsafe
 -- |The 'isPrime' function is a wrapper for Miller-Rabin
 isPrime :: Integer -> Bool
 isPrime n = unsafePerformIO (testMillerRabin 100 n)
-
 
 -- |The 'testMillerRabin' tests primality of numer using Miller-Rabin Algoritm
 testMillerRabin :: Int -> Integer -> IO Bool
@@ -36,7 +34,6 @@ test n n_1 evens d a = x `elem` [1,n_1] || n_1 `elem` powers
   where
     x = powerMod n a d
     powers = map (powerMod n a) evens
-
 
 -- |The 'witnesses' returns witnesses for numer which are sufficient to check
 witnesses :: (Num a, Ord a, Random a) => Int -> a -> IO [a]
