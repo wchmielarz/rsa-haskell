@@ -35,8 +35,6 @@ Example:
 stack exec rsa-haskell-exe d out.txt out2.txt 7795 25877
 ```
 
-We highly recommend to perform encrypting / decrypting on attached first chapter of polish epic poem Pan Tadeusz.
-
 
 #### Launching tests:
 ```bash
