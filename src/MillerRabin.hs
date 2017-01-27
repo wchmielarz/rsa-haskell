@@ -30,6 +30,7 @@ testMillerRabin k n
   where
     (evens,odds) = span even (iterate (`div` 2) (pred n))
 
+-- |The 'test' tests if number is in given sets
 test :: Integral nat => nat -> nat -> [nat] -> nat -> nat -> Bool
 test n n_1 evens d a = x `elem` [1,n_1] || n_1 `elem` powers
   where
