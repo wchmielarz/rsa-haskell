@@ -19,7 +19,7 @@ library
                       , RSA
                       , FileManager
                       , MillerRabin
-                      , Primes
+                      , Keys
   build-depends:       base >= 4.7 && < 5
                       , random
   default-language:    Haskell2010
